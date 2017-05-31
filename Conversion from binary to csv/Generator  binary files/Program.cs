@@ -8,21 +8,24 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Generator__binary_files //Converter_from_binary_to_csv 
+namespace Generator__binary_files 
 {
     
     class Program
     {
-        static void Main(string[] args) // точка входа
+        static void Main(string[] args) 
         {
+            string path = Path.Default.path_;//путь и имя будующего бинарного файла содержащего  структуры
+            int counter = 0;
+
             Console.WriteLine("");
-            Console.WriteLine("Введите количество строк для создаваемого бинарного файла  'D:\\Trade.dat' : ");
+            Console.WriteLine("Бинарный файл  будет создан в директории: {0} ", path);
+            Console.WriteLine("");
+            Console.WriteLine("Введите количество строк для создаваемого бинарного файла :" );
             Console.WriteLine("");
 
             string r = Console.ReadLine();
             int quantityTradeRecodLine = Convert.ToInt32(r);//количество элементов массива  содержашего структуры типа TradeRecod----х
-            string path = @"D:\\Trade.dat";  //путь и имя будующего бинарного файла содержащего  структуры
-            int counter = 0;//счетчик
 
             RandomString rnd = new RandomString();
 
@@ -34,16 +37,11 @@ namespace Generator__binary_files //Converter_from_binary_to_csv
                 trades[i] = new TradeRecord(0 + i, 777, 640 + i, rnd.ArrayRand());
             }
            
-
-
-            //секция критичная в части исключений
             try
             {
                 //создание экземпляра BinaryWriter (запись  в бинарный файл)
                 using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))// открывает поток для записи структур в файл
                 {
-
-                  
                     foreach (TradeRecord t in trades)
                     {
                         writer.Write(t.id);
@@ -54,13 +52,10 @@ namespace Generator__binary_files //Converter_from_binary_to_csv
                         counter = counter + 1;
                     }
                     Console.WriteLine("");
-                    Console.WriteLine("в бинарный файл 'D:\\Trade.dat' записано   {0}  строк(и) структуры 'trade'", counter);
+                    Console.WriteLine("в бинарный файл {0} записано  {1}  строк(и) структуры 'trade'", path ,counter);
 
                     counter = 0;
-
-                    
-
-                }
+                 }
             }
 
             //вывод сообщения о возновении исключения
