@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{433F856C-6A36-4479-B435-6998D1D35699}</ProjectGuid>
+    <ProjectGuid>{B5F9DED0-EF88-44B6-B723-17F2D62FE08B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Generator__binary_files</RootNamespace>
-    <AssemblyName>Generator  binary files</AssemblyName>
+    <RootNamespace>Converter_from_binary_to_csv</RootNamespace>
+    <AssemblyName>Converter from binary to csv</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RandomString.cs" />
+    <Compile Include="ConvertingBinaryToCSV.cs" />
+    <Compile Include="IConvertingBinaryToCSV.cs" />
+    <Compile Include="IReaderFromBinaryFiles.cs" />
+    <Compile Include="IWriteToCSV.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReaderFromBinaryFiles.cs" />
+    <Compile Include="WriteToCSV.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Converter from binary to csv\Converter from binary to csv.csproj">
-      <Project>{B5F9DED0-EF88-44B6-B723-17F2D62FE08B}</Project>
-      <Name>Converter from binary to csv</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

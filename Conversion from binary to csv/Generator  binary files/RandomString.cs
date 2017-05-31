@@ -10,9 +10,10 @@ namespace Generator__binary_files
     {
 
         // заполняем столбец коментариев случайными значениями
+
         Random r = new Random();
 
-        string sumstroka = "";
+        string sumString = "";
         int s = 0;
         int z = 0;
         int t = 0;
@@ -23,22 +24,22 @@ namespace Generator__binary_files
             z = r.Next(0, 10000);
 
             if (s == 0)
-            { sumstroka = "   trade:Sell   result:Profit     " + "   +" + z + " $"; }
+            { sumString = "   trade:Sell   result:Profit     " + "   +" + z + " $"; }
             else if (s == 1)
-            { sumstroka = "   trade:Sell   result:Loss           " + t + " $"; }
+            { sumString = "   trade:Sell   result:Loss           " + t + " $"; }
             else if (s == 2)
-            { sumstroka = "   trade:Bay    result:Profit     " + "  +" + z + " $"; }
+            { sumString = "   trade:Bay    result:Profit     " + "  +" + z + " $"; }
             else if (s == 3)
-            { sumstroka = "   trade:Bay    result:Loss          " + t + " $"; }
+            { sumString = "   trade:Bay    result:Loss          " + t + " $"; }
             else if (s == 4)
-            { sumstroka = "   trade:Bay    result:StopLoss  " + t + " $"; }
+            { sumString = "   trade:Bay    result:StopLoss  " + t + " $"; }
             else if (s == 5)
-            { sumstroka = "   trade:Sell   result:Stoploss  " + t + " $"; }
+            { sumString = "   trade:Sell   result:Stoploss  " + t + " $"; }
 
             else
-            { sumstroka = " - "; }
+            { sumString = " - "; }
 
-            return sumstroka;
+            return sumString;
         }
    }
 }
