@@ -8,31 +8,31 @@ namespace Converter_from_binary_to_csv
 {
     class Program
     {
-        public const string path_dat = @"D:\\Trade.dat";  //путь и имя бинарного файла со структурами
-        public const string path_CSV = @"D:\\Trade.CSV";  //путь и имя  создаваемого файла с разделителями, типа *.CSV
+       
 
-        static void Main(string[] args) // тестовое задание 1:
+        
+        
+
+        static void Main(string[] args) 
         {
 
 
             try
 
             {
-                //класс 'ReaderFromBinaryFiles' вычитывает данные из бинарного файла и возвращает коллекцию структурированных данных  
-                //ReaderFromBinaryFiles readerFromBinaryFiles = new ReaderFromBinaryFiles(path_dat);
-                //List<TradeRecord> Collektion = readerFromBinaryFiles.fromBinaryFile(path_dat);
-
-
-                //класс 'ReadToCSV' получает коллекцию структурированных данных и генерирует из нее конечный файл *.CSV 
-                //ReadToCSV readToCSV = new ReadToCSV(Collektion, path_CSV);//создаем экземпляр классауктур
-                //readToCSV.toCSV(Collektion, path_CSV);//вызов метода класса 
-
-
-                //класс 'ConvertigBinaryToCSV' вычитывает данные из бинарного файла и генерирует из нее конечный файл *.CSV   
-                ConvertingBinaryToCSV convertingBinaryToCSV = new ConvertingBinaryToCSV(path_dat, path_CSV);
+                //класс 'ConvertigBinaryToCSV' вычитывает данные из бинарного файла и генерирует конечный файл *.CSV   
+                ConvertingBinaryToCSV convertingBinaryToCSV = new ConvertingBinaryToCSV();
                 int result;
-                List<TradeRecord> Collektion = convertingBinaryToCSV.fromBinaryFile(path_dat, out result);
-                convertingBinaryToCSV.toCSV(Collektion, path_CSV);
+                List<TradeRecord> Collektion = convertingBinaryToCSV.fromBinaryFile(out result);
+                convertingBinaryToCSV.toCSV(Collektion);
+
+
+                // класс 'ConvertigBinaryToCSV' вычитывает данные из бинарного файла и генерирует конечный файл *.CSV
+                //ConvertingBinaryToCSV convertingBinaryToCSV = new ConvertingBinaryToCSV();
+                //convertingBinaryToCSV();
+                //int result;
+                //List<TradeRecord> Collektion = convertingBinaryToCSV.fromBinaryFile( out result);
+                //convertingBinaryToCSV.toCSV(Collektion);
 
             }
 

@@ -13,16 +13,15 @@ namespace Converter_from_binary_to_csv
        //  - 'toCSV'
 
 
-    public class ConvertingBinaryToCSV: IConvertingBinaryToCSV
+    public class ConvertingBinaryToCSV : IConvertingBinaryToCSV
     {
+        public string path_dat_ = Path.Default.path_dat; //путь и имя бинарного файла со структурами
+        public string path_CSV_ = Path.Default.path_csv;  //путь и имя  создаваемого файла с разделителями, типа *.CSV
         
-
         //коструктоp пользовательский
-        public ConvertingBinaryToCSV(string patch_dat_, string patch_CSV_)
+        public ConvertingBinaryToCSV()
         {
-            string patch_dat = patch_dat_;
-            string patch_CSV = patch_CSV_;
-            
+                    
         }
 
         public void fromBinaryFile()
@@ -39,7 +38,7 @@ namespace Converter_from_binary_to_csv
 
 
         //метод 'fromBinaryFile' , вычитывает данные из бинарного потока и возвращает коллекцию структурированных данных  
-        public List<TradeRecord> fromBinaryFile(string patch_dat, out int result)
+        public List<TradeRecord> fromBinaryFile( out int result)
         {
 
 
@@ -49,10 +48,10 @@ namespace Converter_from_binary_to_csv
             int i = 0;//переменная счетчика
 
             //инициация потока
-            using (BinaryReader reader = new BinaryReader(File.Open(patch_dat, FileMode.Open), Encoding.ASCII))
+            using (BinaryReader reader = new BinaryReader(File.Open(path_dat_, FileMode.Open), Encoding.ASCII))
             {
 
-                Console.WriteLine("выполняется чтение из бинарного файла:{0}", patch_dat);
+                Console.WriteLine("выполняется чтение из бинарного файла:{0}", path_dat_);
                 reader.BaseStream.Position = 0;// устанавливаем "курсор" на 0-вую позицию в читаемом бинарном файле
 
 
@@ -91,14 +90,14 @@ namespace Converter_from_binary_to_csv
 
 
         //метод 'toCSV' получает коллекцию структурированных данных  и генерирует из нее конечный файл *.CSV 
-        public int toCSV(List<TradeRecord> trade, string patch_CSV)
+        public int toCSV(List<TradeRecord> trade)
         {
             int i = 0;//переменая счетчика
             int result = 0;//счетчик количества строк выгруженных в файл *.CSV
             //секция критичная в части исключений
            
 
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(patch_CSV))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path_CSV_))
                 {
 
                     foreach (TradeRecord t in trade)
@@ -118,7 +117,7 @@ namespace Converter_from_binary_to_csv
                     }
 
                     Console.WriteLine();
-                    Console.WriteLine(" в файл:   {0}      cконвертировано :   {1} строк ", patch_CSV, i);
+                    Console.WriteLine(" в файл:   {0}      cконвертировано :   {1} строк ", path_CSV_, i);
 
                 result = i;
                 i = 0;

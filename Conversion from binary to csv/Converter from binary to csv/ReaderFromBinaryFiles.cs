@@ -37,31 +37,34 @@ using System.Threading.Tasks;
     {
 
         //коструктоp пользовательский
-        public ReaderFromBinaryFiles(string path_dat_)
+        public ReaderFromBinaryFiles()
         {
-            string path_dat = path_dat_;
-
+            
         }
 
         public void fromBinaryFile()
         {
 
         }
-        
+
+        public string path_dat_ = Path.Default.path_dat; //путь и имя бинарного файла со структурами
+
         //метод 'fromBinaryFile' , вычитывает данные из бинарного потока и возвращает коллекцию структурированных данных  
-        public List<TradeRecord>  fromBinaryFile(string path_dat, out int result )
+        public List<TradeRecord>  fromBinaryFile( out int result )
         {
 
             //создаем экземпляр коллекции , содержащую набор элементов типа структуры TradeRecod
             List<TradeRecord> trades = new List<TradeRecord>();
 
+             
+
             int i = 0;//переменная счетчика
             
             //инициация потока
-            using (BinaryReader reader = new BinaryReader(File.Open(path_dat, FileMode.Open), Encoding.ASCII))
+            using (BinaryReader reader = new BinaryReader(File.Open(path_dat_, FileMode.Open), Encoding.ASCII))
             {
 
-                Console.WriteLine("выполняется чтение из бинарного файла:{0}", path_dat );
+                Console.WriteLine("выполняется чтение из бинарного файла:{0}", path_dat_ );
 
                 reader.BaseStream.Position = 0;// устанавливаем "курсор" на 0-вую позицию в читаемом бинарном файле
 

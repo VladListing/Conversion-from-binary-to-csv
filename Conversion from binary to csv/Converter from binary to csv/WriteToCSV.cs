@@ -11,18 +11,18 @@ namespace Converter_from_binary_to_csv
 
     public class WriteToCSV: IWriteToCSV
     {
-       
+
+        public string path_CSV_ = Path.Default.path_csv;  //путь и имя  создаваемого файла с разделителями, типа *.CSV
+
         //коструктоp пользовательский_1
-        public  WriteToCSV(List<TradeRecord> trades_, string path_CSV_)
+        public  WriteToCSV(List<TradeRecord> trades_)
         {
-            string patch_CSV = path_CSV_;
             List<TradeRecord> trades = trades_;
         }
 
         //коструктоp пользовательский_2
-        public WriteToCSV( string path_CSV_)
+        public WriteToCSV( )
         {
-            string patch_CSV = path_CSV_;
             
         }
 
@@ -34,13 +34,13 @@ namespace Converter_from_binary_to_csv
 
         
         //метод 'toCSV' получает коллекцию структурированных данных  и генерирует из нее конечный файл *.CSV , возвращает количество записаных в файл строк
-          public int toCSV(List<TradeRecord> trades, string path_CSV)
+          public int toCSV(List<TradeRecord> trades, string path_CSV_)
         {
             int counter = 0;//переменая счетчика
             int counter_ = 0;//переменая счетчика возвращаемая
 
             
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path_CSV) ) 
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path_CSV_) ) 
                 {
 
                     foreach (TradeRecord t in trades)
@@ -60,7 +60,7 @@ namespace Converter_from_binary_to_csv
                     }
 
                     Console.WriteLine();
-                    Console.WriteLine(" в файл:   {0}      cконвертировано :   {1} строк ", path_CSV, counter);
+                    Console.WriteLine(" в файл:   {0}      cконвертировано :   {1} строк ", path_CSV_, counter);
                     
                     counter = 0;
                     counter_ = counter;
