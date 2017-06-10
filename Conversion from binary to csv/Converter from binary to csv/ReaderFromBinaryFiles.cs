@@ -55,7 +55,7 @@ using System.Threading.Tasks;
 
             //создаем экземпляр коллекции , содержащую набор элементов типа структуры TradeRecod
             List<TradeRecord> trades = new List<TradeRecord>();
-
+            
              
 
             int i = 0;//переменная счетчика
